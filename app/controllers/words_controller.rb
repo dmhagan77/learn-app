@@ -29,13 +29,17 @@ require 'open-uri'
     defs = call_dictionary(search_word.entry)
 
     #if no defs returned by dictionary, send the empty array
-    defs if defs.empty?
+    if defs.empty?
+      search_word.destroy
+      return defs
 
-    #add new word to DB with defs, associated with search_word.id
-    defs.each {|d| Definition.create(content: d , word_id: search_word.id )}
+    else
+      #add new defs found, associated with search_word.id
+      defs.each {|d| Definition.create(content: d , word_id: search_word.id )}
 
-    #return defs from DB
-    Definition.where(word_id: search_word.id).to_a
+      #return defs from DB
+      Definition.where(word_id: search_word.id).to_a
+    end
 
   end
 
