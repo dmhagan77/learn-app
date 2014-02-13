@@ -1,0 +1,12 @@
+<div id="title">
+  <h1>Doogily-didily</h1>
+  <img src="http://upload.wikimedia.org/wikipedia/en/8/84/Ned_Flanders.png" />
+</div>
+<div id="search">
+    <%= form_tag( root_path) do %>
+        <div><%= text_field_tag(:entry) %></div>
+        <div><%= submit_tag ("Get Defs!") %></div>
+    <% end %>
+</div>
+<div id="error"><%= render partial: "error" if @error %></div>
+<div id="results"><%= render partial: "show_defs" unless @defs.blank? %></div>
