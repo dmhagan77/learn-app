@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.0'
 gem 'rails', '4.0.2'
+#ruby-gemset=hagan-d
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
